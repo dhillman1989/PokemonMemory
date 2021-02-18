@@ -35,8 +35,14 @@ body {
 .resetbutton {
   background-color: rgba(100, 100, 100);
   border: 0;
-  padding: 1rem 2rem;
+  outline: 0;
+  padding: 1.5rem 2.5rem;
   font-size: 2rem;
-  border-radius: 20px;
+  border-radius: 1.5rem;
+  color: yellow;
   margin: 3rem auto;
+  transition: all 0.5s;
+  &:hover {
+    transform: scale(1.1);
+  }
 }

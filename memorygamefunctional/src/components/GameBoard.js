@@ -4,6 +4,8 @@ import axios from "axios";
 import Cards from "./Cards";
 import ScoreBoard from "./ScoreBoard";
 import LevelUp from "./LevelUp";
+import GameOver from "./GameOver";
+import Footer from "./Footer";
 
 const GameBoard = () => {
   const [score, setScore] = useState(0);
@@ -13,6 +15,7 @@ const GameBoard = () => {
   const [usedCards, setUsedCards] = useState([]);
   const [difficulty, setDifficulty] = useState(6);
   const [showLevelUp, setShowLevelUp] = useState(false);
+  const [gameover, setGameover] = useState(false);
 
   const dealCards = (num) => {
     const deck = [...cardDeck];
@@ -59,6 +62,7 @@ const GameBoard = () => {
     setUsedCards([]);
     setDealtCards([]);
     setDifficulty(6);
+    setGameover(false);
     dealCards(difficulty);
   };
 
@@ -77,7 +81,7 @@ const GameBoard = () => {
     console.log("SELECT CARD");
     if (usedCards.some((used) => used == name)) {
       console.log("BAD CARD");
-      resetGame();
+      setGameover(true);
     } else {
       console.log("GOOD CARD");
       setUsedCards([...usedCards, name]);
@@ -106,11 +110,11 @@ const GameBoard = () => {
   return (
     <div>
       <ScoreBoard score={score} best={best} />
-      <button className="resetbutton" onClick={resetGame}>
-        Reset
-      </button>
+
       <Cards dealtCards={dealtCards} cardSelect={cardSelect} />
       {showLevelUp ? <LevelUp /> : null}
+      {gameover ? <GameOver resetGame={resetGame} /> : null}
+      <Footer />
     </div>
   );
 };

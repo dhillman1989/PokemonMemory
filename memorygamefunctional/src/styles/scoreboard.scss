@@ -4,8 +4,22 @@
   font-size: 20px;
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 1rem;
+  align-items: center;
+
+  margin-bottom: 6rem;
   & ul {
     margin-left: auto;
+    font-size: 2.5rem;
+  }
+  & li {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(42, 156, 38);
+    & span {
+      font-weight: 800;
+      color: rgb(47, 171, 209);
+      display: inline-block;
+      margin-right: 20px;
+    }
   }
 }
